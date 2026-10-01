@@ -1,0 +1,111 @@
+<a mat-button routerLink="/orders">← Back to board</a>
+
+@switch (menuState()) {
+  @case ('loading') {
+    <div class="state-box">
+      <mat-spinner diameter="40" />
+      <p>Loading menu...</p>
+    </div>
+  }
+  @case ('error') {
+    <div class="state-box">
+      <p>Couldn't load the menu.</p>
+      <button mat-flat-button color="primary" (click)="loadMenu()">Retry</button>
+    </div>
+  }
+  @case ('ready') {
+    <form class="order-form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <h1>New order</h1>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Order type</mat-label>
+        <mat-select formControlName="type">
+          @for (t of types; track t.value) {
+            <mat-option [value]="t.value">{{ t.label }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      @if (form.controls.type.value === 'dine-in') {
+        <mat-form-field appearance="outline">
+          <mat-label>Table number (1-40)</mat-label>
+          <input matInput type="number" formControlName="table" />
+          @if (form.touched && form.hasError('tableRequired')) {
+            <mat-error>Table number is required for dine-in</mat-error>
+          } @else if (form.touched && form.hasError('tableRange')) {
+            <mat-error>Table must be a whole number from 1 to 40</mat-error>
+          }
+        </mat-form-field>
+      }
+
+      @if (form.controls.type.value === 'delivery') {
+        <mat-form-field appearance="outline">
+          <mat-label>Mobile number</mat-label>
+          <input matInput inputmode="tel" formControlName="phone" placeholder="01012345678" />
+          @if (form.controls.phone.hasError('egyptianMobile')) {
+            <mat-error>Enter a valid Egyptian mobile (01 + 0/1/2/5 + 8 digits)</mat-error>
+          } @else if (form.touched && form.hasError('phoneRequired')) {
+            <mat-error>Mobile number is required for delivery</mat-error>
+          }
+        </mat-form-field>
+      }
+
+      <h2>Items</h2>
+      <div formArrayName="items">
+        @for (row of items.controls; track row; let i = $index) {
+          <div class="item-row" [formGroupName]="i">
+            <mat-form-field appearance="outline" class="item-select">
+              <mat-label>Menu item</mat-label>
+              <mat-select formControlName="menuId">
+                @for (m of menuList(); track m.id) {
+                  <mat-option [value]="m.id">{{ m.name }} (EGP {{ m.price }})</mat-option>
+                }
+              </mat-select>
+              <mat-error>Choose an item</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="item-qty">
+              <mat-label>Qty</mat-label>
+              <input matInput type="number" formControlName="qty" />
+              <mat-error>Quantity must be 1 to 20</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="item-note">
+              <mat-label>Note (optional)</mat-label>
+              <input matInput formControlName="note" />
+            </mat-form-field>
+
+            <span class="line-total">EGP {{ lineTotal(i) | number: '1.2-2' }}</span>
+
+            <button
+              mat-icon-button
+              type="button"
+              [attr.aria-label]="'Remove item ' + (i + 1)"
+              [disabled]="items.length === 1"
+              (click)="removeItem(i)"
+            >✕</button>
+          </div>
+        }
+      </div>
+
+      <button mat-stroked-button type="button" (click)="addItem()">+ Add item</button>
+
+      @if (items.hasError('noItems')) {
+        <p class="error-text">Add at least one item</p>
+      }
+
+      <dl class="breakdown">
+        <dt>Subtotal</dt><dd>EGP {{ breakdown().subtotal | number: '1.2-2' }}</dd>
+        @if (form.controls.type.value === 'dine-in') {
+          <dt>Service (12%)</dt><dd>EGP {{ breakdown().service | number: '1.2-2' }}</dd>
+        }
+        <dt>VAT (14%)</dt><dd>EGP {{ breakdown().vat | number: '1.2-2' }}</dd>
+        <dt class="grand">Total</dt><dd class="grand">EGP {{ breakdown().total | number: '1.2-2' }}</dd>
+      </dl>
+
+      <button mat-flat-button color="primary" type="submit" [disabled]="submitting()">
+        {{ submitting() ? 'Creating...' : 'Create order' }}
+      </button>
+    </form>
+  }
+}

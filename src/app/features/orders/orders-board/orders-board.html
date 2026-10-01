@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-end mb-3">
+  <a mat-flat-button color="primary" routerLink="/orders/new">+ New order</a>
+</div>
+@switch (state()) {
+  @case ('loading') {
+    <div class="state-box">
+      <mat-spinner diameter="40" />
+      <p>Loading orders...</p>
+    </div>
+  }
+  @case ('error') {
+    <div class="state-box">
+      <p>Couldn't load orders. Make sure the API is running on port 3000.</p>
+      <button mat-flat-button color="primary" (click)="load()">Retry</button>
+    </div>
+  }
+  @case ('ready') {
+    @if (isEmpty()) {
+      <div class="state-box"><p>No orders yet.</p></div>
+    } @else {
+      <app-board-filters
+        class="d-block mb-3"
+        [filters]="filters()"
+        (filtersChange)="onFiltersChange($event)"
+      />
+
+      @if (noResults()) {
+        <div class="state-box"><p>No orders match your filters.</p></div>
+      } @else {
+        <div class="row g-3">
+          @for (col of columns(); track col.status) {
+         <section class="col-12 col-md-6 col-xl-3">
+  <div class="column" [attr.data-status]="col.status">
+    <h2 class="column-title">
+      {{ col.label }} <span class="count">{{ col.orders.length }}</span>
+    </h2>
+    @for (order of col.orders; track order.id) {
+      <app-order-card
+        [order]="order"
+        [menu]="menu()"
+        [now]="now()"
+        (advance)="moveForward($event)"
+      />
+    } @empty {
+      <p class="empty-col">No orders</p>
+    }
+  </div>
+</section>
+          }
+        </div>
+      }
+    }
+  }
+}

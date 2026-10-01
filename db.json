@@ -1,12 +1,47 @@
 {
   "menu": [
-    { "id": "m1", "name": "Koshary", "category": "Mains", "price": 85 },
-    { "id": "m2", "name": "Chicken Shawarma Plate", "category": "Mains", "price": 165 },
-    { "id": "m3", "name": "Molokhia with Rice", "category": "Mains", "price": 120 },
-    { "id": "m4", "name": "Fattoush", "category": "Salads", "price": 70 },
-    { "id": "m5", "name": "Om Ali", "category": "Desserts", "price": 75 },
-    { "id": "m6", "name": "Fresh Mango Juice", "category": "Drinks", "price": 60 },
-    { "id": "m7", "name": "Turkish Coffee", "category": "Drinks", "price": 40 }
+    {
+      "id": "m1",
+      "name": "Koshary",
+      "category": "Mains",
+      "price": 85
+    },
+    {
+      "id": "m2",
+      "name": "Chicken Shawarma Plate",
+      "category": "Mains",
+      "price": 165
+    },
+    {
+      "id": "m3",
+      "name": "Molokhia with Rice",
+      "category": "Mains",
+      "price": 120
+    },
+    {
+      "id": "m4",
+      "name": "Fattoush",
+      "category": "Salads",
+      "price": 70
+    },
+    {
+      "id": "m5",
+      "name": "Om Ali",
+      "category": "Desserts",
+      "price": 75
+    },
+    {
+      "id": "m6",
+      "name": "Fresh Mango Juice",
+      "category": "Drinks",
+      "price": 60
+    },
+    {
+      "id": "m7",
+      "name": "Turkish Coffee",
+      "category": "Drinks",
+      "price": 40
+    }
   ],
   "orders": [
     {
@@ -18,8 +53,16 @@
       "status": "served",
       "createdAt": "2026-09-27T09:10:00.000Z",
       "items": [
-        { "menuId": "m3", "qty": 2, "note": "" },
-        { "menuId": "m7", "qty": 1, "note": "medium sugar" }
+        {
+          "menuId": "m3",
+          "qty": 2,
+          "note": ""
+        },
+        {
+          "menuId": "m7",
+          "qty": 1,
+          "note": "medium sugar"
+        }
       ]
     },
     {
@@ -28,11 +71,19 @@
       "type": "dine-in",
       "table": 7,
       "phone": null,
-      "status": "preparing",
+      "status": "served",
       "createdAt": "2026-09-27T09:22:00.000Z",
       "items": [
-        { "menuId": "m2", "qty": 2, "note": "no garlic sauce" },
-        { "menuId": "m6", "qty": 2, "note": "" }
+        {
+          "menuId": "m2",
+          "qty": 2,
+          "note": "no garlic sauce"
+        },
+        {
+          "menuId": "m6",
+          "qty": 2,
+          "note": ""
+        }
       ]
     },
     {
@@ -44,9 +95,21 @@
       "status": "ready",
       "createdAt": "2026-09-27T09:30:00.000Z",
       "items": [
-        { "menuId": "m1", "qty": 1, "note": "extra dakka" },
-        { "menuId": "m4", "qty": 1, "note": "" },
-        { "menuId": "m7", "qty": 2, "note": "" }
+        {
+          "menuId": "m1",
+          "qty": 1,
+          "note": "extra dakka"
+        },
+        {
+          "menuId": "m4",
+          "qty": 1,
+          "note": ""
+        },
+        {
+          "menuId": "m7",
+          "qty": 2,
+          "note": ""
+        }
       ]
     },
     {
@@ -55,10 +118,14 @@
       "type": "takeaway",
       "table": null,
       "phone": null,
-      "status": "preparing",
+      "status": "ready",
       "createdAt": "2026-09-27T09:41:00.000Z",
       "items": [
-        { "menuId": "m1", "qty": 1, "note": "" }
+        {
+          "menuId": "m1",
+          "qty": 1,
+          "note": ""
+        }
       ]
     },
     {
@@ -67,11 +134,19 @@
       "type": "delivery",
       "table": null,
       "phone": "01012345678",
-      "status": "new",
+      "status": "preparing",
       "createdAt": "2026-09-27T09:48:00.000Z",
       "items": [
-        { "menuId": "m2", "qty": 1, "note": "" },
-        { "menuId": "m5", "qty": 1, "note": "" }
+        {
+          "menuId": "m2",
+          "qty": 1,
+          "note": ""
+        },
+        {
+          "menuId": "m5",
+          "qty": 1,
+          "note": ""
+        }
       ]
     },
     {
@@ -80,13 +155,41 @@
       "type": "dine-in",
       "table": 4,
       "phone": null,
-      "status": "new",
+      "status": "preparing",
       "createdAt": "2026-09-27T09:52:00.000Z",
       "items": [
-        { "menuId": "m3", "qty": 1, "note": "" },
-        { "menuId": "m4", "qty": 2, "note": "no onions" },
-        { "menuId": "m6", "qty": 1, "note": "" }
+        {
+          "menuId": "m3",
+          "qty": 1,
+          "note": ""
+        },
+        {
+          "menuId": "m4",
+          "qty": 2,
+          "note": "no onions"
+        },
+        {
+          "menuId": "m6",
+          "qty": 1,
+          "note": ""
+        }
       ]
+    },
+    {
+      "id": "1046",
+      "type": "delivery",
+      "table": null,
+      "phone": "01111111111",
+      "items": [
+        {
+          "menuId": "m4",
+          "qty": 10,
+          "note": "mmmmmmm"
+        }
+      ],
+      "number": 1046,
+      "status": "new",
+      "createdAt": "2026-10-01T19:49:22.485Z"
     }
   ]
 }

@@ -1,0 +1,29 @@
+<mat-card class="order-card" [class.late]="late()">
+  <mat-card-content>
+    <div class="d-flex justify-content-between align-items-center">
+<a class="order-link" [routerLink]="['/orders', order().id]"><strong>#{{ order().number }}</strong></a>
+      <span class="label">{{ label() }}</span>
+    </div>
+
+    <div class="meta">
+      {{ itemCount() }} {{ itemCount() === 1 ? 'item' : 'items' }} · EGP {{ subtotal() | number: '1.2-2' }}
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center">
+      @if (served()) {
+        <span class="done">done</span>
+      } @else {
+        <span class="timer">{{ elapsed() }}</span>
+        @if (late()) {
+          <span class="late-badge">Late</span>
+        }
+      }
+    </div>
+
+    @if (next()) {
+      <button mat-stroked-button class="advance-btn" (click)="advance.emit(order())">
+        {{ actionLabel() }}
+      </button>
+    }
+  </mat-card-content>
+</mat-card>
