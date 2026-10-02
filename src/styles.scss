@@ -23,12 +23,6 @@ body {
 
 h1, h2 { letter-spacing: -0.01em; }
 
-.mat-toolbar.mat-primary {
-  --mat-toolbar-container-background-color: #1e1b4b;
-  --mat-toolbar-container-text-color: #ffffff;
-  box-shadow: 0 2px 8px rgb(15 23 42 / 0.15);
-}
-
 .mat-mdc-unelevated-button.mat-primary {
   --mat-button-filled-container-color: var(--brand);
   --mat-button-filled-label-text-color: #fff;
@@ -58,4 +52,41 @@ h1, h2 { letter-spacing: -0.01em; }
 :focus-visible {
   outline: 2px solid var(--brand);
   outline-offset: 2px;
+}
+.mat-mdc-form-field {
+  --mdc-outlined-text-field-focus-outline-color: var(--brand);
+  --mdc-outlined-text-field-focus-label-text-color: var(--brand);
+  --mdc-outlined-text-field-caret-color: var(--brand);
+  --mdc-outlined-text-field-outline-color: #cbd5e1;
+  --mat-form-field-outlined-focus-outline-color: var(--brand);
+  --mat-form-field-outlined-focus-label-text-color: var(--brand);
+  --mat-form-field-outlined-outline-color: #cbd5e1;
+}
+
+.mat-mdc-text-field-wrapper.mdc-text-field--outlined {
+  background: var(--surface);
+  border-radius: 12px;
+}
+
+.mdc-text-field--outlined .mdc-notched-outline__leading {
+  border-radius: 12px 0 0 12px !important;
+}
+.mdc-text-field--outlined .mdc-notched-outline__trailing {
+  border-radius: 0 12px 12px 0 !important;
+}
+.mat-mdc-select-panel,
+.mat-mdc-autocomplete-panel {
+  --mat-select-panel-background-color: #ffffff;
+  --mat-autocomplete-background-color: #ffffff;
+  background: #ffffff !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 30px rgb(15 23 42 / 0.18) !important;
+  border: 1px solid var(--border);
+}
+
+.mat-mdc-option {
+  --mat-option-selected-state-label-text-color: var(--brand);
+  --mat-option-selected-state-layer-color: #eef2ff;
+  --mat-option-hover-state-layer-color: #f1f5f9;
+  --mat-option-focus-state-layer-color: #f1f5f9;
 }

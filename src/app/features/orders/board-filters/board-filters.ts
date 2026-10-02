@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, effect, input, output } from '@angu
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
+// import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { OrderType } from '../../../core/models/order.model';
@@ -12,7 +12,7 @@ import { OrderFilters } from '../orders-board/order-filters/order-filters';
   selector: 'app-board-filters',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonToggleModule],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule],
   templateUrl: './board-filters.html',
   styleUrl: './board-filters.scss',
 })

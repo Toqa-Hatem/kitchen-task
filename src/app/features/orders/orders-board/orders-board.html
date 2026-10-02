@@ -27,7 +27,7 @@
       @if (noResults()) {
         <div class="state-box"><p>No orders match your filters.</p></div>
       } @else {
-        <div class="row g-3">
+        <div class="row g-4">
           @for (col of columns(); track col.status) {
          <section class="col-12 col-md-6 col-xl-3">
   <div class="column" [attr.data-status]="col.status">

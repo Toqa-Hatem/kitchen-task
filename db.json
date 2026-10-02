@@ -190,6 +190,27 @@
       "number": 1046,
       "status": "new",
       "createdAt": "2026-10-01T19:49:22.485Z"
+    },
+    {
+      "id": "1047",
+      "type": "delivery",
+      "table": null,
+      "phone": "01111111111",
+      "items": [
+        {
+          "menuId": "m4",
+          "qty": 1,
+          "note": "testttt"
+        },
+        {
+          "menuId": "m2",
+          "qty": 3,
+          "note": "rrrrrrrr"
+        }
+      ],
+      "number": 1047,
+      "status": "new",
+      "createdAt": "2026-10-02T10:59:13.156Z"
     }
   ]
 }

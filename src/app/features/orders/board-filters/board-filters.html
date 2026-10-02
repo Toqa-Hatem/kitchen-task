@@ -1,16 +1,21 @@
-<div class="d-flex flex-column flex-md-row gap-3 align-items-md-center">
+<div class="filters">
   <mat-form-field appearance="outline" class="search-field" subscriptSizing="dynamic">
     <mat-label>Search by order number or table</mat-label>
+    <span matPrefix class="search-icon" aria-hidden="true">🔍</span>
     <input matInput inputmode="numeric" [formControl]="search" />
   </mat-form-field>
 
-  <mat-button-toggle-group
-    aria-label="Filter by order type"
-    [value]="filters().type"
-    (change)="onTypeChange($event.value)"
-  >
+  <div class="pills" role="group" aria-label="Filter by order type">
     @for (opt of typeOptions; track opt.label) {
-      <mat-button-toggle [value]="opt.value">{{ opt.label }}</mat-button-toggle>
+      <button
+        type="button"
+        class="pill"
+        [class.active]="filters().type === opt.value"
+        [attr.aria-pressed]="filters().type === opt.value"
+        (click)="onTypeChange(opt.value)"
+      >
+        {{ opt.label }}
+      </button>
     }
-  </mat-button-toggle-group>
+  </div>
 </div>

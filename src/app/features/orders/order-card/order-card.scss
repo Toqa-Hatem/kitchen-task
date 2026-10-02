@@ -1,0 +1,70 @@
+.order-card {
+  --mat-card-elevated-container-shape: 12px;
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--c, var(--c-served));
+    box-shadow: 0 1px 3px rgb(15 23 42 / 0.08);
+  transition: box-shadow 0.15s, transform 0.15s;
+
+  &:hover {
+    box-shadow: 0 6px 16px rgb(15 23 42 / 0.12);
+    transform: translateY(-1px);
+  }
+
+  &.late {
+    border-left-color: var(--c-late);
+    background: #fff7f7;
+  }
+}
+
+.order-link {
+  color: var(--brand);
+  text-decoration: none;
+  font-size: 1.05rem;
+
+  &:hover { text-decoration: underline; }
+}
+
+.label {
+  background: #eef2ff;
+  color: var(--brand-dark);
+  border-radius: 999px;
+  padding: 0.1rem 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.meta {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.timer {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.late-badge {
+  background: var(--c-late);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.1rem 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.done {
+  color: var(--c-ready);
+  font-weight: 600;
+}
+
+.advance-btn {
+  width: 100%;
+  margin-top: 0.75rem;
+  border-radius: 10px;
+  --mat-button-outlined-label-text-color: var(--brand);
+  --mat-button-outlined-outline-color: var(--brand);
+}
